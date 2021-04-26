@@ -1,0 +1,26 @@
+spring: 
+    application:
+        name: user-service
+    datasource:
+        name: dsource
+        url: jdbc:mysql://localhost:3306/avadb
+        username: root
+        password: P@ssmysql
+        driver-class-name: com.mysql.cj.jdbc.Driver
+
+    jpa:
+        show-sql: true
+        properties:
+            hibernate: 
+                dilect: org.hibernate.dialect.MySQL55Dialect.MySQL55Dialect
+        hibernate:
+            naming_strategy: org.hibernate.cfg.EJB3NamingStrategy
+
+    servlet:
+        multipart:
+            enabled: true
+            max-file-size: 300MB
+            file-size-threshold: 1KB
+
+server:
+  port: 8083

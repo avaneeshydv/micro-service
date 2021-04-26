@@ -1,0 +1,54 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-DiscoveryServerApplication<discovery-server>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.oracle.ava.discovery.DiscoveryServerApplication",
+            "projectName": "discovery-server",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-UserApplication<users>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.ava.user.UserApplication",
+            "projectName": "users",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-MoviesApplication<movies>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.ava.movies.MoviesApplication",
+            "projectName": "movies",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-BookApiApplication<book-api>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.book.bookapi.BookApiApplication",
+            "projectName": "book-api",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-MovieCatalogApplication<movie-catalog>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.ava.movies.catalog.MovieCatalogApplication",
+            "projectName": "movie-catalog",
+            "args": ""
+        }
+    ]
+}

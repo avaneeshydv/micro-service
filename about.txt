@@ -1,0 +1,5 @@
+# This folder contains inter service communication using service discovery
+# It also contains Hystrix circuit breaking & Bulkhead in movie-catalog
+1- Spring cloud 
+2- Eureka Server
+3- Eureka Client
