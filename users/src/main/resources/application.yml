@@ -13,9 +13,7 @@ spring:
         properties:
             hibernate: 
                 dilect: org.hibernate.dialect.MySQL55Dialect.MySQL55Dialect
-        hibernate:
-            naming_strategy: org.hibernate.cfg.EJB3NamingStrategy
-
+    
     servlet:
         multipart:
             enabled: true
