@@ -46,7 +46,7 @@ public class ApplicationController {
     @ResponseBody
     @GetMapping("/getinfo")
     public Users getUserInfo(@RequestParam("id") int id) {
-
+        LOGGER.info("Fetching user detail for {}", id);
         Users usr = new Users();
         usr.setUserId(id);
         return userService.getUser(usr);
@@ -55,7 +55,7 @@ public class ApplicationController {
     @ResponseBody
     @GetMapping("/getuserbymail")
     public Users getUserInfoByEmail(@RequestParam("email") String email) {
-
+        LOGGER.info("Fetching user detail for {}", email);
         Users usr = new Users();
         usr.setEmail(email);
         return userService.getUserByEmail(usr);
@@ -64,7 +64,7 @@ public class ApplicationController {
     @ResponseBody
     @PutMapping("/updateuser")
     public Users getUserInfo(@RequestBody Users users) {
-
+        LOGGER.info("updating user {}", users);
         return userService.updateUser(users);
     }
 

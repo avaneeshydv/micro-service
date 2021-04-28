@@ -60,4 +60,11 @@ public class MovieRating {
     public void setMovie(Movies movie) {
         this.movie = movie;
     }
+
+    @Override
+    public String toString() {
+        return "MovieRating [movie=" + movie + ", rating=" + rating + ", ratingId=" + ratingId + ", reason=" + reason
+                + ", user=" + user + "]";
+    }
+
 }

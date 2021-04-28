@@ -6,6 +6,9 @@ import com.ava.movies.catalog.entity.Users;
 import com.ava.movies.catalog.model.MovieCatalog;
 import com.ava.movies.catalog.model.UserCatalog;
 import com.ava.movies.catalog.repo.MoviesRatingRepository;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,10 +20,10 @@ public class MoviesRatingServiceImpl implements MoviesRatingService {
     private final MoviesRatingRepository repository;
     private final MovieService movieService;
     private final UserService userService;
+    private static final Logger LOGGER = LoggerFactory.getLogger(MoviesRatingServiceImpl.class);
 
-    public MoviesRatingServiceImpl(MoviesRatingRepository repository
-            , MovieService movieService
-            , UserService userService) {
+    public MoviesRatingServiceImpl(MoviesRatingRepository repository, MovieService movieService,
+            UserService userService) {
         this.repository = repository;
         this.movieService = movieService;
         this.userService = userService;
@@ -34,18 +37,19 @@ public class MoviesRatingServiceImpl implements MoviesRatingService {
     @Override
     public MovieCatalog getMovieCatalog(int movieId) {
 
-        //get movie info using movie service
+        // get movie info using movie service
         Movies movieInfo = movieService.getMovieInfo(movieId);
+        LOGGER.info("Movie details {} ", movieInfo.toString());
         MovieCatalog catalog = new MovieCatalog();
-        //populate movie info in catalog
+        // populate movie info in catalog
         if (movieInfo != null) {
             catalog.setMovieName(movieInfo.getMovieName());
             catalog.setDescription(movieInfo.getMovieDescription());
             catalog.setReleaseDate(movieInfo.getReleaseDate().toLocalDate().toString());
         }
-        //populate user info in catalog using DB
+        // populate user info in catalog using DB
         List<MovieRating> allRatingForMovie = repository.findAllByMovie_MovieId(movieId);
-
+        LOGGER.info("Getting all user who rated movie {}", catalog.getMovieName());
         if (allRatingForMovie.size() > 0) {
             List<Users> allUser = new ArrayList<>();
             for (MovieRating rating : allRatingForMovie) {
@@ -61,16 +65,16 @@ public class MoviesRatingServiceImpl implements MoviesRatingService {
     @Override
     public UserCatalog getUserCatalog(int userId) {
 
-        //get user details
+        // get user details
         Users user = userService.getUser(userId);
-
+        LOGGER.info("User details {} ", user.toString());
         UserCatalog catalog = new UserCatalog();
         if (user != null) {
             catalog.setName(user.getFirstName() + " " + user.getLastName());
             catalog.setEmail(user.getEmail());
             catalog.setAddress(user.getAddress());
         }
-        //get all rated movies by this user
+        // get all rated movies by this user
         List<MovieRating> allRatingForMovie = repository.findAllByUser_UserId(userId);
         if (allRatingForMovie.size() > 0) {
             List<Movies> movies = new ArrayList<>();
@@ -80,6 +84,7 @@ public class MoviesRatingServiceImpl implements MoviesRatingService {
                 movie.setComment(rating.getReason());
                 movies.add(movie);
             }
+            LOGGER.info("Getting all movies rated by {}", catalog.getName());
             catalog.setRatedMovies(movies);
         }
         return catalog;

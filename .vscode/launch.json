@@ -49,6 +49,26 @@
             "mainClass": "com.ava.movies.catalog.MovieCatalogApplication",
             "projectName": "movie-catalog",
             "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-CatalogGatewayApplication<catalog-gateway>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.ava.gateway.cataloggateway.CatalogGatewayApplication",
+            "projectName": "catalog-gateway",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-CloudConfigApplication<cloud-config>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.ava.config.cloudconfig.CloudConfigApplication",
+            "projectName": "cloud-config",
+            "args": ""
         }
     ]
 }

@@ -73,4 +73,12 @@ public class Movies {
     public void setComment(String comment) {
         this.comment = comment;
     }
+
+    @Override
+    public String toString() {
+        return "Movies [comment=" + comment + ", movieDescription=" + movieDescription + ", movieId=" + movieId
+                + ", movieName=" + movieName + ", rating=" + rating + ", releaseDate=" + releaseDate + "]";
+    }
+
+    
 }
